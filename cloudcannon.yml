@@ -1,0 +1,38 @@
+build:
+  base: public
+  command: npm run build
+  output_dir: build
+
+upload:
+  include:
+    - build/**
+  exclude:
+    - build/static/css/**/*
+    - build/static/js/**/*
+
+content:
+  collections:
+    pages:
+      output: true
+      path: ''
+      order: 'title'
+      reverse: true
+      layout: page
+      data_source: pages
+
+      fields:
+        title:
+          type: string
+          label: 'Titre'
+          required: true
+        content:
+          type: markdown
+          label: 'Contenu'
+          required: true
+        image:
+          type: image
+          label: 'Image'
+
+        _template:
+          type: hidden
+          value: page
